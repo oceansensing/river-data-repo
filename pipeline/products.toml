@@ -1,0 +1,19 @@
+# What this repository publishes: USGS's rivers where no NOAA chart reaches (`map/nhd-water/`), committed by
+# hand and published on dispatch. Nothing is fetched here: the orchestrator assembles the committed
+# files, checks the tree against the contract and publishes it to Pages and R2 from one build.
+
+[contract]
+check = ["node", "scripts/test-schema.mjs"]
+roots = ["node", "scripts/test-schema.mjs", "--roots"]
+
+# The static half, committed under map/ and copied into every artifact by assemble, which refuses
+# to run when it is absent: a missing static is this repository's defect, not an upstream outage.
+[static]
+required = ["nhd-water"]
+
+[defaults]
+timeout_minutes = 20
+
+[steps]
+
+[products]
