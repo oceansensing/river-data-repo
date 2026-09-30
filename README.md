@@ -3,7 +3,7 @@
 **Rivers**, for the map: a data repository of the oceansensing ocean map system, with its own
 Pages site, its own schedule and its own gigabyte, and no code of its own.
 
-**Its files are made by the site's generator and pushed here by `enc-chart-repo`'s generate workflow with the land they fit; a push under `map/` publishes them.** `PLAN.md` is the founding plan; `CLAUDE.md` carries what must not be
+**Its rivers are made by the site's generator and pushed here by `enc-chart-repo`'s generate workflow with the land they fit, and a push under `map/` publishes them; its water gauges are fetched hourly.** `PLAN.md` is the founding plan; `CLAUDE.md` carries what must not be
 got wrong and the shared doc doctrine.
 
 ## What it publishes
@@ -13,9 +13,14 @@ got wrong and the shared doc doctrine.
 These products are published **operationally but not drawn on the website's map**; the map's status
 line still reports them when they fall behind, which is how their health stays visible.
 
+**The water gauges** (`streamgauges.json`, since 2026-09-30): every U.S. Geological Survey monitoring location that reported streamflow (discharge, ft³/s) or water level (gage height, ft above the gauge's own datum) in the last ten days — about 11,000, most on streams, some on lakes, reservoirs, canals and estuaries — with its name, type, state, drainage area and point, fetched hourly by the site's `scripts/fetch-usgs-gauges.py`. The readings are USGS's own units and provisional, as USGS says of recent data. Each gauge's page is `https://waterdata.usgs.gov/monitoring-location/<id>/`.
+
 ## Where the data comes from
 
 U.S. Geological Survey, the National Hydrography Dataset's map service (`https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer`, layers 9 and 12), a U.S. government work in the public domain. **Read 2026-09-30**: it answered a 0.05-degree box in 2 to 15 s with 1.5 to 2.7 MB of large-scale outline, timed out on a box a few times larger, and answered 502 and 504 often enough that every request is retried; the rivers needed 719 boxes. The cut is made by the same generator as `enc-chart-repo`'s land, kept in a private repository and run by that repository's generate workflow; nothing here runs it.
+
+The gauges: USGS's Water Data OGC API (`https://api.waterdata.usgs.gov/ogcapi/v1`), its `latest-continuous` collection for the readings and `monitoring-locations` for names, a U.S. government work in the public domain. **Read 2026-09-30**: two pages of 10,000 series a parameter, 1.2 MB compressed, four seconds; names asked a hundred locations at a time, only for locations the last publish does not name and a twenty-fourth of the rest each hour. **It allows 1,000 requests an hour to an address without a key**, which answered 429 with a half-hour wait after a morning's exploration; `USGS_API_KEY` (a free key, api.waterdata.usgs.gov/signup) raises it.
+
 
 ## How it runs
 

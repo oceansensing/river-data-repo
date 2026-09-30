@@ -1,6 +1,7 @@
-# What this repository publishes: USGS's rivers where no NOAA chart reaches (`map/nhd-water/`), committed by
-# hand and published on dispatch. Nothing is fetched here: the orchestrator assembles the committed
-# files, checks the tree against the contract and publishes it to Pages and R2 from one build.
+# What this repository publishes: USGS's rivers where no NOAA chart reaches (`map/nhd-water/`), committed
+# monthly by enc-chart-repo's generate workflow; and USGS's water gauges that reported streamflow or
+# water level in the last ten days (`streamgauges.json`), fetched hourly (2026-09-30). The orchestrator
+# assembles both, checks the tree against the contract and publishes it to Pages and R2 from one build.
 
 [contract]
 check = ["node", "scripts/test-schema.mjs"]
@@ -16,4 +17,20 @@ timeout_minutes = 20
 
 [steps]
 
+# About four requests an hour for the readings, and the names of new locations; USGS_API_KEY in the
+# environment raises the service's limit (1,000 requests an hour to an address without one).
+[steps.usgs-gauges]
+cmd = ["python3", "scripts/fetch-usgs-gauges.py", "--only=streamgauges"]
+lane = "api.waterdata.usgs.gov"
+
 [products]
+
+# The newest reading's hour is the header's refTime, a quarter-hour or so behind the run; three hours
+# allows the hourly run two misses before the status calls it late.
+[products.streamgauges]
+title = "USGS water gauges"
+step = "usgs-gauges"
+roots = ["streamgauges.json"]
+writes = ["streamgauges.json"]
+namespace = ["python3", "scripts/fetch-usgs-gauges.py", "--namespace", "--only=streamgauges"]
+max_age_hours = 3

@@ -26,7 +26,10 @@ on:
         description: 'Rebuild even if the probe says the tree is current'
         type: boolean
         default: false
-  # No schedule: nothing to publish until its upstream is live.
+  # Hourly for the water gauges, once a dispatched run has published them
+  # (2026-09-30); USGS's newest readings land in the first minutes of the hour.
+  # schedule:
+  #   - cron: '20 * * * *'
 
 permissions: {}
 
@@ -91,6 +94,8 @@ jobs:
         id: run
         env:
           PIPELINE_ROOT: ${{ github.workspace }}
+          # A free key from api.waterdata.usgs.gov/signup; the gauges are fetched without one if unset.
+          USGS_API_KEY: ${{ secrets.USGS_API_KEY }}
         run: python3 site/pipeline/orchestrate.py run
       - name: Upload the site
         if: steps.run.outputs.deploy == 'true'
