@@ -23,3 +23,10 @@ U.S. Geological Survey, the National Hydrography Dataset's map service (`https:/
 `noaa-land/` `012b39a3e7`; build, Pages and R2 green; listed in the site's
 `MAP_ORIGINS` after it. It opened the York above West Point (37°30′ N) and a
 square of the Rappahannock no chart covers.
+
+**Decided 2026-09-30, to build next**: `enc-chart-repo`'s monthly workflow
+regenerates these rivers with its land and pushes them here, so the two
+publish together; a run that changes nothing leaves the published set as
+it is. **Held**: a second set (87 tiles) from a rule letting USGS decide
+squares only a small-scale chart covers, which closed the Great Lakes'
+open water (USGS maps them as lakes); not published.
