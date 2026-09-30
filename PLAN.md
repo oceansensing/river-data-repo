@@ -15,3 +15,11 @@ U.S. Geological Survey, the National Hydrography Dataset's map service (`https:/
 
 1. The first dispatched run, read: Pages and R2.
 2. A river layer with streamflow gauges, linking to each gauge's own page and data, expected.
+
+## Record
+
+**2026-09-30.** First publish, run `36751215526`: `nhd-water/` version
+`095574cab8` (19 zoom-8 tiles, 1,252 USGS features), cut for `enc-chart-repo`'s
+`noaa-land/` `012b39a3e7`; build, Pages and R2 green; listed in the site's
+`MAP_ORIGINS` after it. It opened the York above West Point (37°30′ N) and a
+square of the Rappahannock no chart covers.
