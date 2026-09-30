@@ -30,3 +30,17 @@ publish together; a run that changes nothing leaves the published set as
 it is. **Held**: a second set (87 tiles) from a rule letting USGS decide
 squares only a small-scale chart covers, which closed the Great Lakes'
 open water (USGS maps them as lakes); not published.
+
+**2026-09-30, evening.** Version `d71c8d904e` (23 zoom-8 tiles, 2,221 USGS
+features), cut for `enc-chart-repo`'s `noaa-land/` `ea33a419d7`, pushed by
+that repository's first generate run and published on the push
+(`36781091333`, green). Besides the squares no chart covers, it now decides
+the stretches only a small-scale chart covers where larger-scale charts
+enclose them: the chart's water USGS maps as no water of any kind closes
+(16.3 km², among it the Rappahannock's river drawn kilometres wide over its
+south bank at 37.59 N) and USGS's rivers, bays, estuaries and sea within
+0.05 degrees of charted water open (50.4 km², nearly all Delaware Bay's
+marsh channels in New Jersey); North Carolina's sounds are unchanged. USGS's
+sea, now in the query, opens two places no chart covers: open water north
+of St Thomas that had been made land, and the St Croix River's upper reach.
+
