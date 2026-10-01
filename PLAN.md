@@ -7,7 +7,7 @@
 
 **The rivers where no chart reaches** (`map/nhd-water/`): the U.S. Geological Survey's National Hydrography Dataset water — streams and rivers, bays and inlets, canals and ditches and areas of complex channels (its large-scale Area layer) and estuaries (its large-scale Waterbody layer) — cut to the parts of US waters no NOAA nautical chart covers, within 0.05 degrees of charted water. Zoom-8 Mapbox vector tiles (layer `water`, extent 65536) under a version named by their own hash, and `nhd-water/index.json` naming the version, every tile and the version of `enc-chart-repo`'s `noaa-land/` they were cut to fit (`charts`). A reader counts these rings with that land's by the even-odd rule, so each is a hole in it: the York above West Point and a square of the Rappahannock were land before them. Pushed with that land by `enc-chart-repo`'s generate workflow and published on push. The world's rivers and their streamflow gauges are expected to follow.
 
-**The water gauges** (`streamgauges.json`, since 2026-09-30): every U.S. Geological Survey monitoring location that reported streamflow (discharge, ft³/s) or water level (gage height, ft above the gauge's own datum) in the last ten days — about 11,000, most on streams, some on lakes, reservoirs, canals and estuaries — with its name, type, state, drainage area and point, fetched hourly by the site's `scripts/fetch-usgs-gauges.py`. The readings are USGS's own units and provisional, as USGS says of recent data. Each gauge's page is `https://waterdata.usgs.gov/monitoring-location/<id>/`.
+**The water gauges** (`streamgauges.json`, since 2026-09-30): every U.S. Geological Survey monitoring location that reported streamflow (discharge, ft³/s) or water level (gage height, ft above the gauge's own datum) in the last ten days — about 11,000, most on streams, some on lakes, reservoirs, canals and estuaries — and, since that night, **every Water Survey of Canada station that did** (discharge, m³/s; water level, m; about 2,160, from Environment and Climate Change Canada's MSC GeoMet, OGL-Canada), each with its name, state or province, drainage area and point, fetched hourly by the site's `scripts/fetch-stream-gauges.py`. Each reading names its unit and each gauge its agency (`USGS` or `WSC`); the readings are each agency's own units and provisional. A USGS gauge's page is `https://waterdata.usgs.gov/monitoring-location/<id>/`, a Canadian one's `https://wateroffice.ec.gc.ca/report/real_time_e.html?stn=<number>`.
 
 ## Where the data comes from
 
@@ -48,9 +48,18 @@ marsh channels in New Jersey); North Carolina's sounds are unchanged. USGS's
 sea, now in the query, opens two places no chart covers: open water north
 of St Thomas that had been made land, and the St Croix River's upper reach.
 
+**2026-09-30, later that night.** Canada's water gauges joined the same
+file: the site's fetcher, now `scripts/fetch-stream-gauges.py`, asks MSC
+GeoMet for the active stations and for the readings at whole hours (the
+hour and the three before it; a first run one every twelve hours for ten
+days), carries a station's newest reading for ten days, and keeps one
+agency's gauges from the last publish while the other fails. First live run
+on the site's machine: 13,150 gauges, 2,161 of them Canada's, 25 s.
+
 **2026-09-30, night.** The water gauges declared: `streamgauges.json`,
 about 11,000 USGS locations that reported streamflow or water level in ten
-days, fetched hourly (`scripts/fetch-usgs-gauges.py` in the site). The first
+days, fetched hourly (`scripts/fetch-usgs-gauges.py` in the site, now
+`fetch-stream-gauges.py`). The first
 dispatched run, `36793861915` (with `USGS_API_KEY` set), published 10,987
 gauges, every one named — 8,721 with discharge, 10,938 with gage height —
 to Pages and R2, green; the hourly schedule is on since, at twenty past.
