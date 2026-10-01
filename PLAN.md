@@ -52,6 +52,18 @@ marsh channels in New Jersey); North Carolina's sounds are unchanged. USGS's
 sea, now in the query, opens two places no chart covers: open water north
 of St Thomas that had been made land, and the St Croix River's upper reach.
 
+**2026-10-01.** France's and the Arctic Great Rivers Observatory's gauges
+joined the file: the site's fetcher asks Hub'Eau's hydrometry API at whole
+hours (ten minutes a window; a first run one every twelve hours for ten
+days) and reads Arctic GRO's discharge page on Mondays, the Russian rivers
+published by their typical flow for the day. A first run with nothing
+carried timed at 18 minutes for France alone, against the step's twenty,
+so the gauges' step has forty (`products.toml`). The first publish with
+them, run `36869687921`, built in 14½ minutes and published 16,291 gauges
+to Pages and R2 at 13:49 UTC — USGS 10,967, Water Survey of Canada 2,162,
+France 3,149, Arctic GRO 13 — the header's `refTime` 13:31Z, a typical flow
+dating nothing.
+
 **2026-09-30, later that night.** Canada's water gauges joined the same
 file: the site's fetcher, now `scripts/fetch-stream-gauges.py`, asks MSC
 GeoMet for the active stations and for the readings at whole hours (the
