@@ -1,7 +1,7 @@
 # river-data-repo: the founding plan and running record
 
 **Rivers**, for the map. Created on GitHub by the owner and given its documents by the site's
-`pipeline/scaffold/new-origin.py`. **Its rivers are made by the site's generator and pushed here by `enc-chart-repo`'s generate workflow with the land they fit, and a push under `map/` publishes them; its water gauges are fetched hourly.**
+`pipeline/scaffold/new-origin.py`. **Its rivers are made by the site's generator and pushed here by `enc-chart-repo`'s generate workflow with the land they fit, and a push under `map/` publishes them; its water gauges are fetched and published hourly, at twenty past.**
 
 ## What it is for
 
@@ -51,8 +51,8 @@ of St Thomas that had been made land, and the St Croix River's upper reach.
 
 **2026-09-30, night.** The water gauges declared: `streamgauges.json`,
 about 11,000 USGS locations that reported streamflow or water level in ten
-days, fetched hourly (`scripts/fetch-usgs-gauges.py` in the site). The
-schedule stays commented until a dispatched run has published, and the run
-waits on `USGS_API_KEY`: without a key the first run's hundred-odd name
-requests share a runner's hourly allowance with everyone else's.
+days, fetched hourly (`scripts/fetch-usgs-gauges.py` in the site). The first
+dispatched run, `36793861915` (with `USGS_API_KEY` set), published 10,987
+gauges, every one named — 8,721 with discharge, 10,938 with gage height —
+to Pages and R2, green; the hourly schedule is on since, at twenty past.
 

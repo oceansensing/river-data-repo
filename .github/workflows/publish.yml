@@ -26,10 +26,11 @@ on:
         description: 'Rebuild even if the probe says the tree is current'
         type: boolean
         default: false
-  # Hourly for the water gauges, once a dispatched run has published them
-  # (2026-09-30); USGS's newest readings land in the first minutes of the hour.
-  # schedule:
-  #   - cron: '20 * * * *'
+  # Hourly for the water gauges, on since their first dispatched run published
+  # them (2026-09-30, run 36793861915); USGS's newest readings land in the
+  # first minutes of the hour.
+  schedule:
+    - cron: '20 * * * *'
 
 permissions: {}
 
