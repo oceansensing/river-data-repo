@@ -1,6 +1,7 @@
 # What this repository publishes: USGS's rivers where no NOAA chart reaches (`map/nhd-water/`), committed
-# monthly by enc-chart-repo's generate workflow; and USGS's and Canada's water gauges that reported
-# streamflow or water level in the last ten days (`streamgauges.json`), fetched hourly (2026-09-30). The orchestrator
+# monthly by enc-chart-repo's generate workflow; and USGS's, Canada's and France's water gauges that
+# reported streamflow or water level in the last ten days, with the Arctic Great Rivers Observatory's
+# Russian rivers by their typical flow for the day (`streamgauges.json`), fetched hourly (2026-09-30). The orchestrator
 # assembles both, checks the tree against the contract and publishes it to Pages and R2 from one build.
 
 [contract]
@@ -19,8 +20,12 @@ timeout_minutes = 20
 
 # About four requests an hour for the readings, and the names of new locations; USGS_API_KEY in the
 # environment raises the service's limit (1,000 requests an hour to an address without one).
+# Forty minutes, not the default twenty: a first run with nothing carried asks France for ten days
+# (24 ten-minute windows), timed at 18 minutes for France alone on 2026-10-01; an hourly run takes
+# about three. A first run that never finished would leave every later run a first run too.
 [steps.stream-gauges]
 cmd = ["python3", "scripts/fetch-stream-gauges.py", "--only=streamgauges"]
+timeout_minutes = 40
 lane = "api.waterdata.usgs.gov"
 
 [products]
@@ -28,7 +33,7 @@ lane = "api.waterdata.usgs.gov"
 # The newest reading's hour is the header's refTime, a quarter-hour or so behind the run; three hours
 # allows the hourly run two misses before the status calls it late.
 [products.streamgauges]
-title = "Water gauges (USGS and Water Survey of Canada)"
+title = "Water gauges (USGS, Water Survey of Canada, Hub'Eau, Arctic GRO)"
 step = "stream-gauges"
 roots = ["streamgauges.json"]
 writes = ["streamgauges.json"]
