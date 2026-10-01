@@ -23,8 +23,8 @@ repository per sensor: `orb-satellite-viirs-repo`, `orb-satellite-goes-repo`
 and `orb-satellite-pace-repo` (the last set up, publishing nothing until its
 upstream is live). And since 2026-09-30 four set up together: `enc-chart-repo`
 (NOAA's nautical charts — their land now, a chart layer later),
-`river-data-repo` (rivers — USGS's river outlines where no chart reaches now,
-the world's rivers and their gauges later), and `pace-satellite-repo` and
+`river-data-repo` (rivers — USGS's river outlines where no chart reaches and
+its water gauges hourly, now; the world's rivers later), and `pace-satellite-repo` and
 `viirs-satellite-repo` (satellite products, publishing nothing until their
 sources are chosen). Each document answers exactly one question.
 
@@ -127,7 +127,7 @@ fact from a guess that aged.
 
 - **`PLAN.md`**: the founding plan and running record.
 - **`DECISIONS.md`**: dated one-way decisions, D1 onward.
-- **`pipeline/products.toml`**: what this repository publishes: no product, the committed `map/` alone, declared under `[static]`.
+- **`pipeline/products.toml`**: what this repository publishes: one product, `streamgauges` (`streamgauges.json`, hourly at twenty past, with `USGS_API_KEY`), and the committed `map/nhd-water/` under `[static]`; a push under `map/` publishes too.
 
 ## What must not be got wrong here
 

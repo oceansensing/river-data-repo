@@ -3,10 +3,9 @@
 # and to Cloudflare R2. Written by the site's pipeline/scaffold/new-origin.py
 # from the sibling data repositories' workflow.
 #
-# **Dispatch-only until a dispatched run has published a tree**: prove the
-# pipeline, THEN uncomment the schedule below, in the same commit as the docs.
-# `status/status.json` reports `schedule: null` until then, and the site's
-# watchdog names an origin with no schedule on sight.
+# **Scheduled since 2026-09-30**, once its first dispatched run had published
+# the water gauges: hourly (below), and on a push under map/, which the
+# monthly generate workflow in enc-chart-repo makes.
 #
 # Needs, from the owner: `PIPELINES_SSH_KEY` (this repository's read-only
 # deploy key on oceansensing.github.io) and the organization's R2_* secrets.

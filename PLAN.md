@@ -18,8 +18,7 @@ The gauges: USGS's Water Data OGC API (`https://api.waterdata.usgs.gov/ogcapi/v1
 
 ## Open
 
-1. The first dispatched run, read: Pages and R2.
-2. A river layer with streamflow gauges, linking to each gauge's own page and data, expected.
+1. A river layer with streamflow gauges, linking to each gauge's own page and data, expected.
 
 ## Record
 
