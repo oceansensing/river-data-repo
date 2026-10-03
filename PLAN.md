@@ -62,7 +62,11 @@ Germany's federal waterways (PEGELONLINE), Ireland's Office of Public Works
 (hydrodaten), Sweden's SMHI and Finland's Syke (daily values). Run from the
 site's fetcher before its push, all ten agencies took 1 min 49 s on a first
 run and 1 min 27 s on the next — the step has forty — and wrote 22,088
-gauges, 5.8 MB (864 KB compressed), from 4.6 MB.
+gauges, 5.8 MB (864 KB compressed), from 4.6 MB. The first publish with
+them, run `37100477855` (begun 05:38 UTC), ran the step in about two
+minutes and published 22,089 gauges — USGS 10,970, Canada 2,161, France
+3,145, England 3,434, Germany 681, Ireland 459, Switzerland 201, Sweden
+155, Finland 870, Arctic GRO 13 — every server `ok` in the status.
 
 **2026-10-01.** France's and the Arctic Great Rivers Observatory's gauges
 joined the file: the site's fetcher asks Hub'Eau's hydrometry API at whole
