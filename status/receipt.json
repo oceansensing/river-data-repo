@@ -1,0 +1,14 @@
+{
+ "schema": 1,
+ "generated": "2026-10-04T00:09:35Z",
+ "mode": "full",
+ "fates": {
+  "streamgauges": "fresh"
+ },
+ "reasons": {},
+ "built": {},
+ "withheld": {},
+ "deploy": true,
+ "notes": [],
+ "behind": []
+}
