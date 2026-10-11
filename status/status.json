@@ -1,0 +1,125 @@
+{
+ "schema": 2,
+ "contract": 1,
+ "generated": "2026-10-11T01:52:59Z",
+ "mode": "full",
+ "run": {
+  "id": "38103169189",
+  "url": "https://github.com/oceansensing/river-data-repo/actions/runs/38103169189"
+ },
+ "schedule": {
+  "crons": [
+   "20 * * * *"
+  ],
+  "longestGapHours": 1.0
+ },
+ "products": {
+  "streamgauges": {
+   "title": "Water gauges (USGS, Water Survey of Canada, Hub'Eau, Arctic GRO)",
+   "roots": [
+    "streamgauges.json"
+   ],
+   "fate": "fresh",
+   "reason": null,
+   "checked": "2026-10-11T01:52:59Z",
+   "updated": "2026-10-11T01:52:59Z",
+   "hour": "2026-10-11T01:50Z",
+   "modelRun": null,
+   "source": null,
+   "hours": [
+    "2026-10-11T01:50Z"
+   ],
+   "stale": false,
+   "staleCause": null,
+   "ageHours": 0.0,
+   "nearestOffsetHours": 0.0,
+   "health": {
+    "streamgauges": {
+     "root": "streamgauges.json",
+     "servers": [
+      {
+       "name": "U.S. Geological Survey",
+       "state": "ok",
+       "asked": 10948,
+       "unanswered": 0,
+       "kept": 0,
+       "failedRuns": 0
+      },
+      {
+       "name": "Water Survey of Canada",
+       "state": "ok",
+       "asked": 2158,
+       "unanswered": 0,
+       "kept": 0,
+       "failedRuns": 0
+      },
+      {
+       "name": "Hub'Eau, eaufrance (French national hydrometry)",
+       "state": "ok",
+       "asked": 3114,
+       "unanswered": 0,
+       "kept": 0,
+       "failedRuns": 0
+      },
+      {
+       "name": "Arctic Great Rivers Observatory (Roshydromet discharge)",
+       "state": "ok",
+       "asked": 13,
+       "unanswered": 0,
+       "kept": 0,
+       "failedRuns": 0
+      },
+      {
+       "name": "Environment Agency (England), real-time flood-monitoring API",
+       "state": "ok",
+       "asked": 3439,
+       "unanswered": 0,
+       "kept": 0,
+       "failedRuns": 0
+      },
+      {
+       "name": "PEGELONLINE, WSV (German federal waterways)",
+       "state": "ok",
+       "asked": 681,
+       "unanswered": 0,
+       "kept": 0,
+       "failedRuns": 0
+      },
+      {
+       "name": "Office of Public Works (Ireland), waterlevel.ie",
+       "state": "ok",
+       "asked": 460,
+       "unanswered": 0,
+       "kept": 0,
+       "failedRuns": 0
+      },
+      {
+       "name": "Federal Office for the Environment FOEN (Switzerland)",
+       "state": "ok",
+       "asked": 201,
+       "unanswered": 0,
+       "kept": 0,
+       "failedRuns": 0
+      },
+      {
+       "name": "SMHI (Swedish Meteorological and Hydrological Institute)",
+       "state": "ok",
+       "asked": 191,
+       "unanswered": 0,
+       "kept": 0,
+       "failedRuns": 0
+      },
+      {
+       "name": "Finnish Environment Institute (Syke), Hydrology API",
+       "state": "ok",
+       "asked": 876,
+       "unanswered": 0,
+       "kept": 0,
+       "failedRuns": 0
+      }
+     ]
+    }
+   }
+  }
+ }
+}

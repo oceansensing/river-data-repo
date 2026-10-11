@@ -1,0 +1,108 @@
+{
+ "schema": 1,
+ "product": "streamgauges",
+ "title": "Water gauges (USGS, Water Survey of Canada, Hub'Eau, Arctic GRO)",
+ "fate": "fresh",
+ "reason": null,
+ "checked": "2026-10-11T01:52:59Z",
+ "updated": "2026-10-11T01:52:59Z",
+ "hour": "2026-10-11T01:50Z",
+ "modelRun": null,
+ "source": null,
+ "hours": [
+  "2026-10-11T01:50Z"
+ ],
+ "files": {
+  "streamgauges.json": {
+   "bytes": 5772262,
+   "sha256": "435c2bba41d88403e5be024d3f11289a1925737f480df54087292b34984b053c"
+  }
+ },
+ "health": {
+  "streamgauges": {
+   "root": "streamgauges.json",
+   "servers": [
+    {
+     "name": "U.S. Geological Survey",
+     "state": "ok",
+     "asked": 10948,
+     "unanswered": 0,
+     "kept": 0,
+     "failedRuns": 0
+    },
+    {
+     "name": "Water Survey of Canada",
+     "state": "ok",
+     "asked": 2158,
+     "unanswered": 0,
+     "kept": 0,
+     "failedRuns": 0
+    },
+    {
+     "name": "Hub'Eau, eaufrance (French national hydrometry)",
+     "state": "ok",
+     "asked": 3114,
+     "unanswered": 0,
+     "kept": 0,
+     "failedRuns": 0
+    },
+    {
+     "name": "Arctic Great Rivers Observatory (Roshydromet discharge)",
+     "state": "ok",
+     "asked": 13,
+     "unanswered": 0,
+     "kept": 0,
+     "failedRuns": 0
+    },
+    {
+     "name": "Environment Agency (England), real-time flood-monitoring API",
+     "state": "ok",
+     "asked": 3439,
+     "unanswered": 0,
+     "kept": 0,
+     "failedRuns": 0
+    },
+    {
+     "name": "PEGELONLINE, WSV (German federal waterways)",
+     "state": "ok",
+     "asked": 681,
+     "unanswered": 0,
+     "kept": 0,
+     "failedRuns": 0
+    },
+    {
+     "name": "Office of Public Works (Ireland), waterlevel.ie",
+     "state": "ok",
+     "asked": 460,
+     "unanswered": 0,
+     "kept": 0,
+     "failedRuns": 0
+    },
+    {
+     "name": "Federal Office for the Environment FOEN (Switzerland)",
+     "state": "ok",
+     "asked": 201,
+     "unanswered": 0,
+     "kept": 0,
+     "failedRuns": 0
+    },
+    {
+     "name": "SMHI (Swedish Meteorological and Hydrological Institute)",
+     "state": "ok",
+     "asked": 191,
+     "unanswered": 0,
+     "kept": 0,
+     "failedRuns": 0
+    },
+    {
+     "name": "Finnish Environment Institute (Syke), Hydrology API",
+     "state": "ok",
+     "asked": 876,
+     "unanswered": 0,
+     "kept": 0,
+     "failedRuns": 0
+    }
+   ]
+  }
+ }
+}
