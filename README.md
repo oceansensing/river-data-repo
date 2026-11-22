@@ -37,9 +37,9 @@ workflow, and nothing else executable; a push under `map/` starts the publish,
 and `enc-chart-repo`'s generate workflow pushes here with a deploy key that can write. Each run publishes to GitHub Pages and
 to Cloudflare R2 from one build. Related repositories: `enc-chart-repo`, whose land these rivers are cut to fit.
 
-**Which document gets what, and what "update docs" means across all
-twenty-four repositories, is the doctrine block at the top of `CLAUDE.md`**: the
-same text in all twenty-four, held equal by the site's `check:docs`.
+**Which document gets what, and what "update docs" means across every
+repository of this project, is the doctrine block at the top of `CLAUDE.md`**: the
+same text in each, held equal by the site's `check:docs`.
 
 ## Structure
 
