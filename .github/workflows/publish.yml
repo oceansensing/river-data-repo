@@ -1,21 +1,10 @@
-# Publish this repository's products: fetch with the site's pipelines,
-# validate against the site's contract, and publish one build to GitHub Pages
-# and to Cloudflare R2. Written by the site's pipeline/scaffold/new-origin.py
-# from the sibling data repositories' workflow.
-#
-# **Scheduled since 2026-09-30**, once its first dispatched run had published
-# the water gauges: hourly (below), and on a push under map/, which the
-# monthly generate workflow in enc-chart-repo makes.
-#
-# Needs, from the owner: `PIPELINES_SSH_KEY` (this repository's read-only
-# deploy key on oceansensing.github.io) and the organization's R2_* secrets.
+# Publish this repository's data: built by the pipeline in
+# oceansensing/oceansensing.github.io, which keeps its documentation.
+# Secrets: PIPELINES_SSH_KEY, R2_ACCESS_KEY_ID, R2_ENDPOINT, R2_SECRET_ACCESS_KEY, USGS_API_KEY.
 
 name: Publish
 
 on:
-  # A push of new files under map/ publishes them: enc-chart-repo's monthly
-  # generate workflow pushes the rivers with a deploy key (a push made with a
-  # workflow's own token would start nothing).
   push:
     branches: [main]
     paths: ['map/**']
@@ -25,9 +14,6 @@ on:
         description: 'Rebuild even if the probe says the tree is current'
         type: boolean
         default: false
-  # Hourly for the water gauges, on since their first dispatched run published
-  # them (2026-09-30, run 36793861915); USGS's newest readings land in the
-  # first minutes of the hour.
   schedule:
     - cron: '20 * * * *'
 
@@ -47,8 +33,6 @@ jobs:
       deploy: ${{ steps.run.outputs.deploy }}
       behind: ${{ steps.run.outputs.behind }}
     steps:
-      # This repository first: actions/checkout cleans its destination, so
-      # taking the root after the others would wipe them.
       - name: Check out this repository
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - name: Check out the pipelines
@@ -94,7 +78,6 @@ jobs:
         id: run
         env:
           PIPELINE_ROOT: ${{ github.workspace }}
-          # A free key from api.waterdata.usgs.gov/signup; the gauges are fetched without one if unset.
           USGS_API_KEY: ${{ secrets.USGS_API_KEY }}
         run: python3 site/pipeline/orchestrate.py run
       - name: Upload the site
@@ -140,8 +123,6 @@ jobs:
         if: needs.build.outputs.deploy == 'true'
         uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
 
-  # R2 stands on its own (the site's pipeline D12): beside the Pages deploy,
-  # not after it, and neither side's failure stops the other.
   publish-r2:
     needs: build
     if: needs.build.outputs.deploy == 'true'
@@ -164,7 +145,7 @@ jobs:
           path: pages
       - name: Test the publish script
         run: python3 code/pipeline/test_publish_r2.py
-      - name: Publish to R2
+      - name: Publish to storage
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
